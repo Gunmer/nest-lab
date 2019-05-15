@@ -26,10 +26,10 @@ describe('SaveUserUseCase', () => {
     expect(useCase).toBeDefined();
   });
 
-  it('should call save', () => {
-    const user = { id: 1, name: '' };
+  it('should call save', async () => {
+    const user = { id: undefined, age: 1, name: '' };
 
-    useCase.execute(user);
+    await useCase.execute(user);
 
     expect(userRepository.save).toBeCalledWith(user);
   });

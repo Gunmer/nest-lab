@@ -26,10 +26,10 @@ describe('GetAllUsersUseCase', () => {
     expect(useCase).toBeDefined();
   });
 
-  it('should call getAll', () => {
-    useCase.execute();
+  it('should call getAll', async () => {
+    await useCase.execute();
 
-    expect(userRepository.getAll).toBeCalled();
+    expect(userRepository.find).toBeCalled();
   });
 
 });

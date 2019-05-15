@@ -3,7 +3,7 @@ import { GetAllUsersUseCase } from '../../domain/use-cases/get-all-users.use-cas
 import { FindUserUseCase } from '../../domain/use-cases/find-user.use-case';
 import { SaveUserUseCase } from '../../domain/use-cases/save-user.use-case';
 import { RemoveUserUseCase } from '../../domain/use-cases/remove-user.use-case';
-import { User } from '../../domain/model/user';
+import { UserEntity } from '../../domain/model/user.entity';
 
 @Controller('/user')
 export class UserController {
@@ -17,23 +17,23 @@ export class UserController {
   }
 
   @Get()
-  getUsers() {
-    return this.getAllUsers.execute();
+  async getUsers() {
+    return await this.getAllUsers.execute();
   }
 
   @Get('/:userId')
-  getUser(@Param('userId') userId: number) {
-    return this.findUser.execute(userId);
+  async getUser(@Param('userId') userId: string) {
+    return await this.findUser.execute(userId);
   }
 
   @Post()
-  addUser(@Body() user: User) {
-    this.saveUser.execute(user);
+  async addUser(@Body() user: UserEntity) {
+    await this.saveUser.execute(user);
   }
 
   @Delete('/:userId')
-  deleteUser(@Param('userId') userId: number) {
-    this.removeUser.execute(userId);
+  async deleteUser(@Param('userId') userId: string) {
+    await this.removeUser.execute(userId);
   }
 
 }

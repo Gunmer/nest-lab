@@ -41,30 +41,30 @@ describe('UserController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should be execute getAllUser', () => {
-    controller.getUsers();
+  it('should be execute getAllUser', async () => {
+    await controller.getUsers();
 
     expect(getAllUsers.execute).toBeCalled();
   });
 
-  it('should be execute findUser', () => {
-    controller.getUser(1);
+  it('should be execute findUser', async () => {
+    await controller.getUser('id');
 
-    expect(findUser.execute).toBeCalledWith(1);
+    expect(findUser.execute).toBeCalledWith('id');
   });
 
-  it('should be execute saveUser', () => {
-    const user = { id: 1, name: 'User' };
+  it('should be execute saveUser', async () => {
+    const user = { id: undefined, age: 1, name: 'UserEntity' };
 
-    controller.addUser(user);
+    await controller.addUser(user);
 
     expect(saveUser.execute).toBeCalledWith(user);
   });
 
-  it('should be execute deleteUser', () => {
-    controller.deleteUser(1);
+  it('should be execute deleteUser', async () => {
+    await controller.deleteUser('id');
 
-    expect(removeUser.execute).toBeCalledWith(1);
+    expect(removeUser.execute).toBeCalledWith('id');
   });
 
 });

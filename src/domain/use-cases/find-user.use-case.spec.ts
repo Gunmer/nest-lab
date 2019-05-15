@@ -26,10 +26,10 @@ describe('FindUserUseCase', () => {
     expect(useCase).toBeDefined();
   });
 
-  it('should call findById', () => {
-    useCase.execute(1);
+  it('should call findOne', async () => {
+    await useCase.execute('id');
 
-    expect(userRepository.findById).toBeCalledWith(1);
+    expect(userRepository.findOne).toBeCalled();
   });
 
 });

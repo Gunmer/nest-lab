@@ -9,8 +9,8 @@ export class RemoveUserUseCase {
   ) {
   }
 
-  execute(userId: number) {
-    return this.userRepository.removeById(userId);
+  async execute(userId: string) {
+    return await this.userRepository.delete(userId);
   }
 
 }

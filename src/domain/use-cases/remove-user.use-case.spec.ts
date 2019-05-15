@@ -26,10 +26,10 @@ describe('RemoveUserUseCase', () => {
     expect(useCase).toBeDefined();
   });
 
-  it('should call removeById', () => {
-    useCase.execute(1);
+  it('should call delete', async () => {
+    await useCase.execute('id');
 
-    expect(userRepository.removeById).toBeCalledWith(1);
+    expect(userRepository.delete).toBeCalled();
   });
 
 });

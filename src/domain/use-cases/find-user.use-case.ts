@@ -9,7 +9,7 @@ export class FindUserUseCase {
   ) {
   }
 
-  execute(userId: number) {
-    return this.userRepository.findById(userId);
+  async execute(userId: string) {
+    return await this.userRepository.findOne(userId);
   }
 }
