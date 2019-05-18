@@ -1,6 +1,6 @@
-import { UserEntity } from '../../domain/model/user.entity';
+import { User } from '../../domain/entities/user';
 import { EntityRepository, Repository } from 'typeorm';
 
-@EntityRepository(UserEntity)
-export class UserRepository extends Repository<UserEntity> {
+@EntityRepository(User)
+export class UserRepository extends Repository<User> {
 }

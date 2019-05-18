@@ -10,9 +10,11 @@ export class TypeOrmConfig implements TypeOrmOptionsFactory {
       host: 'localhost',
       port: 27017,
       database: 'test',
-      logging: 'all',
+      logging: true,
+      loggerLevel: 'error',
       synchronize: true,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [__dirname + '/**/entities/*{.ts,.js}'],
+      useNewUrlParser: true,
     };
   }
 

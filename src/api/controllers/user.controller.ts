@@ -3,7 +3,7 @@ import { GetAllUsersUseCase } from '../../domain/use-cases/get-all-users.use-cas
 import { FindUserUseCase } from '../../domain/use-cases/find-user.use-case';
 import { SaveUserUseCase } from '../../domain/use-cases/save-user.use-case';
 import { RemoveUserUseCase } from '../../domain/use-cases/remove-user.use-case';
-import { UserEntity } from '../../domain/model/user.entity';
+import { User } from '../../domain/entities/user';
 
 @Controller('/user')
 export class UserController {
@@ -27,7 +27,7 @@ export class UserController {
   }
 
   @Post()
-  async addUser(@Body() user: UserEntity) {
+  async addUser(@Body() user: User) {
     await this.saveUser.execute(user);
   }
 

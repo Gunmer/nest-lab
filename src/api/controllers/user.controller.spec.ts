@@ -54,7 +54,7 @@ describe('UserController', () => {
   });
 
   it('should be execute saveUser', async () => {
-    const user = { id: undefined, age: 1, name: 'UserEntity' };
+    const user = { id: undefined, age: 1, name: 'User' };
 
     await controller.addUser(user);
 

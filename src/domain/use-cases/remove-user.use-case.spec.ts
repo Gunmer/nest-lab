@@ -2,6 +2,8 @@ import { Provider } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { UserRepository } from '../../data/repositories/user.repository';
 import { RemoveUserUseCase } from './remove-user.use-case';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { User } from '../entities/user';
 
 jest.mock('../../data/repositories/user.repository');
 
@@ -13,7 +15,10 @@ describe('RemoveUserUseCase', () => {
   beforeEach(async () => {
     const providers: Provider[] = [
       RemoveUserUseCase,
-      UserRepository,
+      {
+        provide: getRepositoryToken(User),
+        useClass: UserRepository,
+      },
     ];
     const app = await Test.createTestingModule({ providers }).compile();
 

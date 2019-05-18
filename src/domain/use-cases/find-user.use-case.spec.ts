@@ -2,6 +2,8 @@ import { Provider } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { UserRepository } from '../../data/repositories/user.repository';
 import { FindUserUseCase } from './find-user.use-case';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { User } from '../entities/user';
 
 jest.mock('../../data/repositories/user.repository');
 
@@ -13,7 +15,10 @@ describe('FindUserUseCase', () => {
   beforeEach(async () => {
     const providers: Provider[] = [
       FindUserUseCase,
-      UserRepository,
+      {
+        provide: getRepositoryToken(User),
+        useClass: UserRepository,
+      },
     ];
     const app = await Test.createTestingModule({ providers }).compile();
 
@@ -29,7 +34,7 @@ describe('FindUserUseCase', () => {
   it('should call findOne', async () => {
     await useCase.execute('id');
 
-    expect(userRepository.findOne).toBeCalled();
+    expect(userRepository.findOne).toBeCalledWith('id');
   });
 
 });

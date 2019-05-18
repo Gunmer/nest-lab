@@ -1,4 +1,4 @@
-import { UserEntity } from '../model/user.entity';
+import { User } from '../entities/user';
 import { UserRepository } from '../../data/repositories/user.repository';
 import { Injectable } from '@nestjs/common';
 
@@ -10,7 +10,7 @@ export class SaveUserUseCase {
   ) {
   }
 
-  async execute(user: UserEntity) {
+  async execute(user: User) {
     await this.userRepository.save(user);
   }
 }
