@@ -5,6 +5,7 @@ import { GetAllUsersUseCase } from '../../domain/use-cases/get-all-users.use-cas
 import { FindUserUseCase } from '../../domain/use-cases/find-user.use-case';
 import { SaveUserUseCase } from '../../domain/use-cases/save-user.use-case';
 import { RemoveUserUseCase } from '../../domain/use-cases/remove-user.use-case';
+import { User } from '../../domain/entities/user';
 
 jest.mock('../../domain/use-cases/get-all-users.use-case');
 jest.mock('../../domain/use-cases/find-user.use-case');
@@ -54,7 +55,7 @@ describe('UserController', () => {
   });
 
   it('should be execute saveUser', async () => {
-    const user = { id: undefined, age: 1, name: 'User' };
+    const user = new User();
 
     await controller.addUser(user);
 
