@@ -1,5 +1,7 @@
 # Nest-lab
 
+![travis](https://travis-ci.org/Gunmer/nest-lab.svg?branch=master)
+
 ## Description
 
 ## Installation
